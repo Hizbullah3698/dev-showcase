@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
 import Projects from "./sections/Projects";
@@ -12,19 +13,56 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="font-sans section-gradient min-h-screen">
+    <div className="font-sans section-gradient min-h-screen text-text-primary">
+      {/* Navbar always on top */}
       <Navbar />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Hero />
-        <Projects />
-        <Experience />
-        <About />
-        <Skills />
-        <Certificates />
-        <Articles />
-        <Resume />
-        <Contact />
-      </main>
+
+      {/* Smooth page entry animation */}
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
+        {/* Each section wrapped with spacing + snap */}
+        <section id="hero" className="snap-start py-24">
+          <Hero />
+        </section>
+
+        <section id="projects" className="snap-start py-24">
+          <Projects />
+        </section>
+
+        <section id="experience" className="snap-start py-24">
+          <Experience />
+        </section>
+
+        <section id="about" className="snap-start py-24">
+          <About />
+        </section>
+
+        <section id="skills" className="snap-start py-24">
+          <Skills />
+        </section>
+
+        <section id="certificates" className="snap-start py-24">
+          <Certificates />
+        </section>
+
+        <section id="articles" className="snap-start py-24">
+          <Articles />
+        </section>
+
+        <section id="resume" className="snap-start py-24">
+          <Resume />
+        </section>
+
+        <section id="contact" className="snap-start py-24">
+          <Contact />
+        </section>
+      </motion.main>
+
+      {/* Footer */}
       <Footer />
     </div>
   );

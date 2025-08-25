@@ -1,310 +1,214 @@
+/* globals.css - Optimized Premium Design System */
+
+/* 1. Fonts should always come first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+/* 2. Tailwind layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Google Fonts - Premium professional fonts with display=swap for fast loading */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap');
+/* 
+===========================================
+DESIGN TOKENS - SINGLE SOURCE OF TRUTH
+===========================================
+All colors, gradients, shadows defined here.
+Tailwind config reads from these CSS variables.
+*/
 
-/* Premium Professional Design Tokens - Consistent across light/dark */
 :root {
-  /* Primary Brand Colors - Professional Blue-Indigo */
-  --brand-50:  #f8fafc;
-  --brand-100: #f1f5f9;
-  --brand-200: #e2e8f0;
-  --brand-300: #cbd5e1;
-  --brand-400: #94a3b8;
-  --brand-500: #6366f1; /* Modern indigo */
-  --brand-600: #4f46e5; /* Main brand */
-  --brand-700: #4338ca;
-  --brand-800: #3730a3;
-  --brand-900: #312e81;
+  /* Background System */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #151520;
+  --bg-tertiary: #1e1e2e;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
 
-  /* Accent Colors - Sophisticated Purple */
-  --accent-400: #c084fc;
-  --accent-500: #a855f7;
-  --accent-600: #9333ea;
-  --accent-700: #7c3aed;
+  /* Text System */
+  --text-primary: #ffffff;
+  --text-secondary: #b4b4b9;
+  --text-muted: #6b7280;
+  --text-accent: #667eea;
 
-  /* Success/Growth Green */
-  --success-400: #4ade80;
-  --success-500: #22c55e;
-  --success-600: #16a34a;
+  /* Accent System */
+  --accent-primary: #667eea;
+  --accent-secondary: #764ba2;
+  --accent-pink: #f093fb;
+  --accent-cyan: #00f2fe;
+  --accent-red: #f5576c;
 
-  /* Premium Backgrounds */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --bg-card: rgba(255, 255, 255, 0.8);
-  --bg-glass: rgba(255, 255, 255, 0.1);
-  
-  /* Modern Gradients - Light and performant */
-  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
-  --gradient-secondary: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-  --gradient-accent: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-  --gradient-subtle: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-  
-  /* Text Colors */
-  --text-primary: #0f172a;   /* slate-900 - Premium dark */
-  --text-secondary: #475569; /* slate-600 - Professional gray */
-  --text-tertiary: #64748b;  /* slate-500 - Subtle */
-  --text-accent: #4f46e5;    /* Brand color for links */
+  /* Border System */
+  --border-primary: rgba(255, 255, 255, 0.1);
+  --border-secondary: rgba(255, 255, 255, 0.05);
+  --border-accent: rgba(102, 126, 234, 0.3);
 
-  /* Border & Shadow - Optimized for fast render */
-  --border-light: #e2e8f0;
-  --border-medium: #cbd5e1;
-  --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-glow: 0 0 0 1px rgba(99, 102, 241, 0.1), 0 4px 16px rgba(99, 102, 241, 0.12);
+  /* Gradient System */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-hero: radial-gradient(
+    ellipse at top,
+    rgba(102, 126, 234, 0.15) 0%,
+    transparent 50%
+  );
+
+  /* Shadow System */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
+  --shadow-glow-lg: 0 0 40px rgba(102, 126, 234, 0.4);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.16);
+
+  /* Spacing System */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Animation Timing */
+  --timing-fast: 0.15s;
+  --timing-base: 0.3s;
+  --timing-slow: 0.5s;
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);
 }
 
-/* Optional refined dark mode (toggle via class for SEO/no JS bloat) */
-.dark {
-  --bg-primary: #0f172a;     /* slate-900 */
-  --bg-secondary: #1e293b;   /* slate-800 */
-  --bg-tertiary: #334155;    /* slate-700 */
-  --bg-card: rgba(30, 41, 59, 0.8);
-  --text-primary: #f1f5f9;   /* slate-100 */
-  --text-secondary: #cbd5e1; /* slate-300 */
-  --text-tertiary: #94a3b8;  /* slate-400 */
-  --border-light: #334155;
-  --border-medium: #475569;
+/* 
+===========================================
+BASE STYLES
+===========================================
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Enhanced Base Styles - Consistent fonts/colors */
-@layer base {
-  html { 
-    scroll-behavior: smooth; 
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  }
-  
-  body { 
-    @apply font-sans antialiased;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: 1.6;
-  }
-  
-  /* Premium Typography - Bolder for headings */
-  h1, h2, h3, h4, h5, h6 { 
-    @apply font-heading;
-    color: var(--text-primary);
-    letter-spacing: -0.025em;
-  }
-  
-  h1 { 
-    @apply text-4xl md:text-6xl lg:text-7xl font-bold;
-    line-height: 1.1;
-  }
-  
-  h2 { 
-    @apply text-3xl md:text-4xl lg:text-5xl font-semibold;
-    line-height: 1.2;
-  }
-  
-  h3 { 
-    @apply text-2xl md:text-3xl font-semibold;
-    line-height: 1.3;
-  }
-  
-  p { 
-    @apply text-base md:text-lg;
-    color: var(--text-secondary);
-    line-height: 1.7;
-  }
-  
-  a { 
-    @apply transition-all duration-300;
-    color: var(--text-accent);
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: var(--brand-700);
-  }
-  
-  img { 
-    @apply select-none; 
-  }
-  
-  /* Smooth scrollbar - Premium touch */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: var(--border-medium);
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--text-tertiary);
-  }
+html {
+  scroll-behavior: smooth;
 }
 
-/* Premium Component Utilities - Consistent and reusable */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection styling */
+::selection {
+  background: var(--accent-primary);
+  color: white;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
+}
+
+/* 
+===========================================
+COMPONENT UTILITIES (Tailwind Plugin Layer)
+These will be moved to tailwind.config.js plugins
+===========================================
+*/
+
 @layer components {
-  /* Enhanced Buttons - With gradients/glow */
-  .btn {
-    @apply inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300;
-    box-shadow: var(--shadow-subtle);
-  }
-  
-  .btn-primary {
-    background: var(--gradient-primary);
-    color: white;
-    border: none;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-premium);
-  }
-  
-  .btn-primary:active {
-    transform: translateY(0);
-  }
-  
-  .btn-secondary {
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    border: 2px solid var(--border-light);
-    backdrop-filter: blur(10px);
-  }
-  
-  .btn-secondary:hover {
-    border-color: var(--brand-500);
-    color: var(--brand-600);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-glow);
-  }
-  
-  .btn-ghost {
-    background: transparent;
-    color: var(--text-secondary);
-    border: none;
-  }
-  
-  .btn-ghost:hover {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-  }
-  
-  /* Premium Cards - Glassmorphism with hover lift */
-  .card {
+  /* Glass Morphism Components */
+  .glass {
     background: var(--bg-card);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--border-light);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    box-shadow: var(--shadow-card);
-    transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-primary);
   }
-  
-  .card:hover {
+
+  .glass-card {
+    @apply glass rounded-2xl p-6 shadow-card transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-card-hover);
     transform: translateY(-4px);
-    box-shadow: var(--shadow-premium);
-    border-color: rgba(99, 102, 241, 0.2);
   }
-  
-  .card-premium {
-    background: var(--gradient-subtle);
-    border: 1px solid rgba(99, 102, 241, 0.1);
+
+  /* Button Components */
+  .btn-primary {
+    background: var(--gradient-primary);
+    @apply border-0 px-6 py-3 rounded-xl text-white font-semibold text-sm cursor-pointer transition-all duration-300 relative overflow-hidden;
   }
-  
-  .card-premium:hover {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
-    border-color: rgba(99, 102, 241, 0.3);
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
   }
-  
-  /* Enhanced Chips/Tags - Subtle color consistency */
-  .chip {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium transition-all duration-300;
-    background: rgba(99, 102, 241, 0.1);
-    color: var(--brand-700);
-    border: 1px solid rgba(99, 102, 241, 0.2);
+
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border-accent);
+    @apply px-6 py-3 rounded-xl text-accent-primary font-semibold text-sm cursor-pointer transition-all duration-300;
   }
-  
-  .chip:hover {
-    background: rgba(99, 102, 241, 0.15);
-    border-color: rgba(99, 102, 241, 0.3);
-    transform: scale(1.05);
+
+  .btn-secondary:hover {
+    background: var(--bg-card);
+    box-shadow: var(--shadow-glow);
   }
-  
-  .chip-accent {
-    background: rgba(168, 85, 247, 0.1);
-    color: var(--accent-600);
-    border-color: rgba(168, 85, 247, 0.2);
-  }
-  
-  .chip-success {
-    background: rgba(34, 197, 94, 0.1);
-    color: var(--success-600);
-    border-color: rgba(34, 197, 94, 0.2);
-  }
-  
-  /* Section Backgrounds - For premium layout flow */
-  .section-primary {
-    background: var(--bg-primary);
-  }
-  
-  .section-secondary {
-    background: var(--bg-secondary);
-  }
-  
-  .section-gradient {
-    background: var(--gradient-secondary);
-  }
-  
-  .section-premium {
-    background: var(--gradient-subtle);
-    backdrop-filter: blur(20px);
-  }
-  
-  /* Glassmorphism effect - 2025 trend */
-  .glass {
-    background: var(--bg-glass);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Text gradients - For premium headings */
+
+  /* Text Components */
   .text-gradient {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
-  /* Focus states - Accessibility/SEO friendly */
-  .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+
+  .text-gradient-accent {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  
-  /* Animated underlines - Premium link interactions */
-  .link-animated {
-    position: relative;
-    text-decoration: none;
+
+  /* Card Components */
+  .card-hover-lift {
+    @apply transition-all duration-300 ease-out;
   }
-  
-  .link-animated::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    transition: width 0.3s ease;
+
+  .card-hover-lift:hover {
+    transform: translateY(-4px);
   }
-  
-  .link-animated:hover::after {
-    width: 100%;
+
+  /* Section Components */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 lg:py-24;
   }
 }

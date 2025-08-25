@@ -1,185 +1,316 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: "class",
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      /* 
+      ===========================================
+      FONTS - Centralized Typography System
+      ===========================================
+      */
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui", "Arial", "sans-serif"],
-        heading: ["Playfair Display", "Georgia", "serif"],
+        display: ["Inter", "sans-serif"],
+        body: ["Inter", "sans-serif"],
+        mono: ["JetBrains Mono", "Fira Code", "monospace"],
       },
+
+      /* 
+      ===========================================
+      COLORS - Reading from CSS Variables
+      All colors reference globals.css :root variables
+      ===========================================
+      */
       colors: {
-        // Modern Professional Brand Colors (Indigo-Blue for tech trust)
-        brand: {
-          50: "#f8fafc",
-          100: "#f1f5f9",
-          200: "#e2e8f0",
-          300: "#cbd5e1",
-          400: "#94a3b8",
-          500: "#6366f1", // Modern indigo
-          600: "#4f46e5", // Main brand
-          700: "#4338ca",
-          800: "#3730a3",
-          900: "#312e81",
-        },
-        // Sophisticated Accent Colors (Purple for creativity)
-        accent: {
-          50: "#faf5ff",
-          100: "#f3e8ff",
-          200: "#e9d5ff",
-          300: "#d8b4fe",
-          400: "#c084fc",
-          500: "#a855f7",
-          600: "#9333ea",
-          700: "#7c3aed",
-          800: "#6b21a8",
-          900: "#581c87",
-        },
-        // Success/Growth Colors (Green for achievements)
-        success: {
-          50: "#f0fdf4",
-          100: "#dcfce7",
-          200: "#bbf7d0",
-          300: "#86efac",
-          400: "#4ade80",
-          500: "#22c55e",
-          600: "#16a34a",
-          700: "#15803d",
-          800: "#166534",
-          900: "#14532d",
-        },
-        // Professional Grays (Slate for neutrality)
-        gray: {
-          50: "#f8fafc",
-          100: "#f1f5f9",
-          200: "#e2e8f0",
-          300: "#cbd5e1",
-          400: "#94a3b8",
-          500: "#64748b",
-          600: "#475569",
-          700: "#334155",
-          800: "#1e293b",
-          900: "#0f172a",
-        },
-        // Surface colors using CSS variables for consistency
-        surface: {
+        // Background system
+        bg: {
           primary: "var(--bg-primary)",
           secondary: "var(--bg-secondary)",
           tertiary: "var(--bg-tertiary)",
           card: "var(--bg-card)",
+          "card-hover": "var(--bg-card-hover)",
+        },
+        // Text system
+        text: {
+          primary: "var(--text-primary)",
+          secondary: "var(--text-secondary)",
+          muted: "var(--text-muted)",
+          accent: "var(--text-accent)",
+        },
+        // Accent system
+        accent: {
+          primary: "var(--accent-primary)",
+          secondary: "var(--accent-secondary)",
+          pink: "var(--accent-pink)",
+          cyan: "var(--accent-cyan)",
+          red: "var(--accent-red)",
+        },
+        // Border system
+        border: {
+          primary: "var(--border-primary)",
+          secondary: "var(--border-secondary)",
+          accent: "var(--border-accent)",
         },
       },
+
+      /* 
+      ===========================================
+      GRADIENTS - From CSS Variables
+      ===========================================
+      */
       backgroundImage: {
-        // Premium gradients for sections/heroes
         "gradient-primary": "var(--gradient-primary)",
-        "gradient-secondary": "var(--gradient-secondary)",
         "gradient-accent": "var(--gradient-accent)",
-        "gradient-subtle": "var(--gradient-subtle)",
-
-        // Subtle patterns for premium texture (lightweight SVG)
-        "hero-pattern":
-          'url(\'data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%236366f1" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="4"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\')',
-        "dot-pattern":
-          'url(\'data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%236366f1" fill-opacity="0.03" fill-rule="evenodd"%3E%3Ccircle cx="3" cy="3" r="3"/%3E%3Ccircle cx="13" cy="13" r="3"/%3E%3C/g%3E%3C/svg%3E\')',
+        "gradient-success": "var(--gradient-success)",
+        "hero-gradient": "var(--gradient-hero)",
       },
+
+      /* 
+      ===========================================
+      SHADOWS - From CSS Variables
+      ===========================================
+      */
       boxShadow: {
-        // Professional shadows with glow for premium feel
-        subtle: "var(--shadow-subtle)",
-        card: "var(--shadow-card)",
-        premium: "var(--shadow-premium)",
         glow: "var(--shadow-glow)",
-        "glow-lg":
-          "0 0 0 1px rgba(99, 102, 241, 0.1), 0 10px 40px rgba(99, 102, 241, 0.15)",
+        "glow-lg": "var(--shadow-glow-lg)",
+        card: "var(--shadow-card)",
+        "card-hover": "var(--shadow-card-hover)",
+      },
 
-        // Colored shadows
-        brand: "0 4px 14px 0 rgba(99, 102, 241, 0.15)",
-        accent: "0 4px 14px 0 rgba(168, 85, 247, 0.15)",
-        success: "0 4px 14px 0 rgba(34, 197, 94, 0.15)",
-      },
+      /* 
+      ===========================================
+      ANIMATIONS - Premium 2025 Animations
+      ===========================================
+      */
       animation: {
-        // Subtle animations for interactivity (use in components)
         "fade-in": "fadeIn 0.5s ease-in-out",
-        "fade-in-up": "fadeInUp 0.5s ease-out",
-        "fade-in-down": "fadeInDown 0.5s ease-out",
-        "slide-in-left": "slideInLeft 0.5s ease-out",
-        "slide-in-right": "slideInRight 0.5s ease-out",
+        "fade-up": "fadeUp 0.6s ease-out",
+        "fade-down": "fadeDown 0.6s ease-out",
+        "slide-up": "slideUp 0.5s ease-out",
+        "slide-down": "slideDown 0.5s ease-out",
+        "slide-left": "slideLeft 0.5s ease-out",
+        "slide-right": "slideRight 0.5s ease-out",
         "scale-in": "scaleIn 0.3s ease-out",
-        "bounce-gentle": "bounceGentle 2s ease-in-out infinite",
-        "pulse-gentle": "pulseGentle 2s ease-in-out infinite",
-        float: "float 6s ease-in-out infinite",
+        float: "float 3s ease-in-out infinite",
+        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        gradient: "gradient 8s ease infinite",
+        shimmer: "shimmer 2s linear infinite",
+        glow: "glow 2s ease-in-out infinite alternate",
       },
+
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
-        fadeInUp: {
+        fadeUp: {
           "0%": { opacity: "0", transform: "translateY(30px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        fadeInDown: {
+        fadeDown: {
           "0%": { opacity: "0", transform: "translateY(-30px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        slideInLeft: {
-          "0%": { opacity: "0", transform: "translateX(-30px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
+        slideUp: {
+          "0%": { transform: "translateY(20px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
         },
-        slideInRight: {
-          "0%": { opacity: "0", transform: "translateX(30px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
+        slideDown: {
+          "0%": { transform: "translateY(-20px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        slideLeft: {
+          "0%": { transform: "translateX(20px)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        slideRight: {
+          "0%": { transform: "translateX(-20px)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
         },
         scaleIn: {
-          "0%": { opacity: "0", transform: "scale(0.9)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
-        },
-        bounceGentle: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        pulseGentle: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.8" },
+          "0%": { transform: "scale(0.9)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-20px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        gradient: {
+          "0%, 100%": {
+            "background-size": "200% 200%",
+            "background-position": "left center",
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "right center",
+          },
+        },
+        shimmer: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+        glow: {
+          "0%": { boxShadow: "var(--shadow-glow)" },
+          "100%": { boxShadow: "var(--shadow-glow-lg)" },
         },
       },
+
+      /* 
+      ===========================================
+      SPACING - Extended Spacing Scale
+      ===========================================
+      */
       spacing: {
         18: "4.5rem",
         88: "22rem",
+        100: "25rem",
+        112: "28rem",
         128: "32rem",
-        144: "36rem",
       },
+
+      /* 
+      ===========================================
+      TYPOGRAPHY - Extended Font Scale
+      ===========================================
+      */
+      fontSize: {
+        "2xs": ["0.625rem", { lineHeight: "0.75rem" }],
+        "5xl": ["3rem", { lineHeight: "1" }],
+        "6xl": ["3.75rem", { lineHeight: "1" }],
+        "7xl": ["4.5rem", { lineHeight: "1" }],
+        "8xl": ["6rem", { lineHeight: "1" }],
+        "9xl": ["8rem", { lineHeight: "1" }],
+      },
+
+      letterSpacing: {
+        tightest: "-0.075em",
+      },
+
+      /* 
+      ===========================================
+      MISC - Additional Utilities
+      ===========================================
+      */
       borderRadius: {
-        // Organic radii for 2025 premium feel
-        xl: "1rem",
-        "2xl": "1.5rem",
-        "3xl": "2rem",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
       },
+
       backdropBlur: {
         xs: "2px",
-        md: "10px",
-        lg: "20px",
       },
-      typography: {
-        DEFAULT: {
-          css: {
-            color: "var(--text-secondary)",
-            a: {
-              color: "var(--text-accent)",
-              textDecoration: "none",
-              "&:hover": {
-                color: "var(--brand-700)",
-              },
-            },
-          },
-        },
+
+      zIndex: {
+        60: "60",
+        70: "70",
+        80: "80",
+        90: "90",
+        100: "100",
       },
     },
   },
+
+  /* 
+  ===========================================
+  PLUGINS - Custom Component Classes
+  These create reusable utility classes
+  ===========================================
+  */
   plugins: [
-    // Add if needed: require('@tailwindcss/typography'),
+    function ({ addComponents, addUtilities }) {
+      // Add component classes (like .btn-primary, .glass-card)
+      addComponents({
+        ".btn-primary": {
+          background: "var(--gradient-primary)",
+          border: "none",
+          padding: "0.75rem 1.5rem",
+          borderRadius: "0.75rem",
+          color: "white",
+          fontWeight: "600",
+          fontSize: "0.875rem",
+          cursor: "pointer",
+          transition: "all 0.3s ease",
+          position: "relative",
+          overflow: "hidden",
+          "&:hover": {
+            transform: "translateY(-2px)",
+            boxShadow: "var(--shadow-glow)",
+          },
+        },
+
+        ".btn-secondary": {
+          background: "transparent",
+          border: "1px solid var(--border-accent)",
+          padding: "0.75rem 1.5rem",
+          borderRadius: "0.75rem",
+          color: "var(--accent-primary)",
+          fontWeight: "600",
+          fontSize: "0.875rem",
+          cursor: "pointer",
+          transition: "all 0.3s ease",
+          "&:hover": {
+            background: "var(--bg-card)",
+            boxShadow: "var(--shadow-glow)",
+          },
+        },
+
+        ".glass-card": {
+          background: "var(--bg-card)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid var(--border-primary)",
+          borderRadius: "1rem",
+          padding: "1.5rem",
+          boxShadow: "var(--shadow-card)",
+          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          "&:hover": {
+            background: "var(--bg-card-hover)",
+            borderColor: "var(--border-accent)",
+            boxShadow: "var(--shadow-card-hover)",
+            transform: "translateY(-4px)",
+          },
+        },
+      });
+
+      // Add utility classes
+      addUtilities({
+        ".text-gradient": {
+          background: "var(--gradient-primary)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+        },
+
+        ".text-gradient-accent": {
+          background: "var(--gradient-accent)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+        },
+
+        ".glass": {
+          background: "var(--bg-card)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid var(--border-primary)",
+        },
+
+        ".section-container": {
+          maxWidth: "80rem",
+          marginLeft: "auto",
+          marginRight: "auto",
+          paddingLeft: "1rem",
+          paddingRight: "1rem",
+          "@screen sm": {
+            paddingLeft: "1.5rem",
+            paddingRight: "1.5rem",
+          },
+          "@screen lg": {
+            paddingLeft: "2rem",
+            paddingRight: "2rem",
+          },
+        },
+      });
+    },
   ],
 };
