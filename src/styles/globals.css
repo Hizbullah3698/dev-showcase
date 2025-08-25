@@ -179,7 +179,7 @@ These will be moved to tailwind.config.js plugins
     box-shadow: var(--shadow-glow);
   }
 
-  /* Text Components */
+ 
   .text-gradient {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -194,7 +194,7 @@ These will be moved to tailwind.config.js plugins
     background-clip: text;
   }
 
-  /* Card Components */
+
   .card-hover-lift {
     @apply transition-all duration-300 ease-out;
   }

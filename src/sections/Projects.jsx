@@ -1,4 +1,6 @@
 // src/components/Projects.jsx
+import { motion } from "framer-motion";
+
 export default function Projects() {
   const projects = [
     {
@@ -28,36 +30,71 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-6">
+    <section
+      id="projects"
+      className="py-24 section-premium relative overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Heading */}
-        <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Projects
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-text-primary mb-4">
+            Featured <span className="text-gradient">Projects</span>
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            A selection of my recent work. Each project includes a description,
-            tech stack, and links to the live demo and code.
+          <p className="text-text-secondary max-w-2xl mx-auto text-lg leading-relaxed">
+            A selection of my most recent work. Explore the demos and dive into
+            the code.
           </p>
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
-            <div
+            <motion.div
               key={i}
-              className="bg-white rounded-xl shadow-card p-6 flex flex-col justify-between hover:shadow-lg transition-shadow"
+              initial={{ y: 40, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: i * 0.2, duration: 0.7 }}
+              viewport={{ once: true }}
+              whileHover={{
+                y: -8,
+                scale: 1.02,
+                transition: { duration: 0.3 },
+              }}
+              className="relative group bg-white/10 backdrop-blur-xl border border-white/20 
+                         rounded-3xl shadow-premium hover:shadow-glow p-8 flex flex-col 
+                         transition-all duration-300"
             >
-              <div>
-                <h3 className="font-heading text-xl font-semibold text-gray-900 mb-3">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
+              {/* Ribbon */}
+              <div
+                className="absolute -top-3 left-1/2 -translate-x-1/2 
+                              bg-gradient-to-r from-brand-500 to-accent-500 
+                              text-white text-xs font-medium px-4 py-1 rounded-full 
+                              shadow-md"
+              >
+                {project.title}
+              </div>
+
+              {/* Description */}
+              <div className="mt-6">
+                <p className="text-text-secondary mb-5 leading-relaxed text-base">
+                  {project.description}
+                </p>
 
                 {/* Tech Chips */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-8">
                   {project.tech.map((t, j) => (
-                    <span key={j} className="chip">
+                    <span
+                      key={j}
+                      className="px-3 py-1 text-sm font-medium rounded-full 
+                                 bg-gradient-to-r from-brand-500/80 to-accent-500/80 
+                                 text-white shadow-sm"
+                    >
                       {t}
                     </span>
                   ))}
@@ -65,12 +102,12 @@ export default function Projects() {
               </div>
 
               {/* Buttons */}
-              <div className="flex gap-3">
+              <div className="flex gap-4 mt-auto">
                 <a
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-primary flex-1 text-center"
+                  className="btn-primary flex-1 text-center rounded-xl"
                 >
                   Demo
                 </a>
@@ -78,15 +115,19 @@ export default function Projects() {
                   href={project.code}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-secondary flex-1 text-center"
+                  className="btn-secondary flex-1 text-center rounded-xl"
                 >
                   Code
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Background Glow Elements */}
+      <div className="absolute top-40 left-20 w-72 h-72 bg-brand-500/30 blur-[140px] rounded-full" />
+      <div className="absolute bottom-40 right-20 w-72 h-72 bg-accent-500/30 blur-[140px] rounded-full" />
     </section>
   );
 }
