@@ -1,0 +1,310 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts - Premium professional fonts with display=swap for fast loading */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap');
+
+/* Premium Professional Design Tokens - Consistent across light/dark */
+:root {
+  /* Primary Brand Colors - Professional Blue-Indigo */
+  --brand-50:  #f8fafc;
+  --brand-100: #f1f5f9;
+  --brand-200: #e2e8f0;
+  --brand-300: #cbd5e1;
+  --brand-400: #94a3b8;
+  --brand-500: #6366f1; /* Modern indigo */
+  --brand-600: #4f46e5; /* Main brand */
+  --brand-700: #4338ca;
+  --brand-800: #3730a3;
+  --brand-900: #312e81;
+
+  /* Accent Colors - Sophisticated Purple */
+  --accent-400: #c084fc;
+  --accent-500: #a855f7;
+  --accent-600: #9333ea;
+  --accent-700: #7c3aed;
+
+  /* Success/Growth Green */
+  --success-400: #4ade80;
+  --success-500: #22c55e;
+  --success-600: #16a34a;
+
+  /* Premium Backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --bg-glass: rgba(255, 255, 255, 0.1);
+  
+  /* Modern Gradients - Light and performant */
+  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  --gradient-secondary: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  --gradient-accent: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  
+  /* Text Colors */
+  --text-primary: #0f172a;   /* slate-900 - Premium dark */
+  --text-secondary: #475569; /* slate-600 - Professional gray */
+  --text-tertiary: #64748b;  /* slate-500 - Subtle */
+  --text-accent: #4f46e5;    /* Brand color for links */
+
+  /* Border & Shadow - Optimized for fast render */
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 0 1px rgba(99, 102, 241, 0.1), 0 4px 16px rgba(99, 102, 241, 0.12);
+}
+
+/* Optional refined dark mode (toggle via class for SEO/no JS bloat) */
+.dark {
+  --bg-primary: #0f172a;     /* slate-900 */
+  --bg-secondary: #1e293b;   /* slate-800 */
+  --bg-tertiary: #334155;    /* slate-700 */
+  --bg-card: rgba(30, 41, 59, 0.8);
+  --text-primary: #f1f5f9;   /* slate-100 */
+  --text-secondary: #cbd5e1; /* slate-300 */
+  --text-tertiary: #94a3b8;  /* slate-400 */
+  --border-light: #334155;
+  --border-medium: #475569;
+}
+
+/* Enhanced Base Styles - Consistent fonts/colors */
+@layer base {
+  html { 
+    scroll-behavior: smooth; 
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  body { 
+    @apply font-sans antialiased;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+  
+  /* Premium Typography - Bolder for headings */
+  h1, h2, h3, h4, h5, h6 { 
+    @apply font-heading;
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+  }
+  
+  h1 { 
+    @apply text-4xl md:text-6xl lg:text-7xl font-bold;
+    line-height: 1.1;
+  }
+  
+  h2 { 
+    @apply text-3xl md:text-4xl lg:text-5xl font-semibold;
+    line-height: 1.2;
+  }
+  
+  h3 { 
+    @apply text-2xl md:text-3xl font-semibold;
+    line-height: 1.3;
+  }
+  
+  p { 
+    @apply text-base md:text-lg;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  
+  a { 
+    @apply transition-all duration-300;
+    color: var(--text-accent);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: var(--brand-700);
+  }
+  
+  img { 
+    @apply select-none; 
+  }
+  
+  /* Smooth scrollbar - Premium touch */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-medium);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-tertiary);
+  }
+}
+
+/* Premium Component Utilities - Consistent and reusable */
+@layer components {
+  /* Enhanced Buttons - With gradients/glow */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300;
+    box-shadow: var(--shadow-subtle);
+  }
+  
+  .btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-premium);
+  }
+  
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+  
+  .btn-secondary {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border: 2px solid var(--border-light);
+    backdrop-filter: blur(10px);
+  }
+  
+  .btn-secondary:hover {
+    border-color: var(--brand-500);
+    color: var(--brand-600);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+  }
+  
+  .btn-ghost:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+  }
+  
+  /* Premium Cards - Glassmorphism with hover lift */
+  .card {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-light);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-premium);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+  
+  .card-premium {
+    background: var(--gradient-subtle);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+  }
+  
+  .card-premium:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+  
+  /* Enhanced Chips/Tags - Subtle color consistency */
+  .chip {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium transition-all duration-300;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--brand-700);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+  }
+  
+  .chip:hover {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.3);
+    transform: scale(1.05);
+  }
+  
+  .chip-accent {
+    background: rgba(168, 85, 247, 0.1);
+    color: var(--accent-600);
+    border-color: rgba(168, 85, 247, 0.2);
+  }
+  
+  .chip-success {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--success-600);
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  
+  /* Section Backgrounds - For premium layout flow */
+  .section-primary {
+    background: var(--bg-primary);
+  }
+  
+  .section-secondary {
+    background: var(--bg-secondary);
+  }
+  
+  .section-gradient {
+    background: var(--gradient-secondary);
+  }
+  
+  .section-premium {
+    background: var(--gradient-subtle);
+    backdrop-filter: blur(20px);
+  }
+  
+  /* Glassmorphism effect - 2025 trend */
+  .glass {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Text gradients - For premium headings */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Focus states - Accessibility/SEO friendly */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+  }
+  
+  /* Animated underlines - Premium link interactions */
+  .link-animated {
+    position: relative;
+    text-decoration: none;
+  }
+  
+  .link-animated::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: width 0.3s ease;
+  }
+  
+  .link-animated:hover::after {
+    width: 100%;
+  }
+}
