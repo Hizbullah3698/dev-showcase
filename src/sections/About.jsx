@@ -1,44 +1,68 @@
+// src/sections/About.jsx
 export default function About() {
   return (
-    <section id="about" className="py-20 px-6 bg-white">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        {/* Profile Image */}
-        <div className="flex justify-center">
-          <img
-            src="/assets/profile.jpg"
-            alt="Hizbullah"
-            className="w-60 h-60 object-cover rounded-full shadow-lg border-4 border-gray-200"
-          />
+    <section
+      id="about"
+      className="relative py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-gray-100"
+    >
+      {/* Decorative gradient blob (subtle premium effect) */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-brand-100 blur-3xl opacity-40"></div>
+      </div>
+
+      <div className="max-w-4xl mx-auto text-center">
+        {/* Heading */}
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          About Me
+        </h2>
+
+        {/* Intro Paragraph */}
+        <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+          I'm a{" "}
+          <span className="font-semibold text-gray-900">
+            Frontend Developer
+          </span>{" "}
+          from Islamabad with{" "}
+          <span className="font-semibold text-brand-600">
+            1+ years of experience
+          </span>{" "}
+          crafting responsive, user-friendly web applications. My expertise lies
+          in{" "}
+          <span className="font-semibold text-gray-900">
+            React.js, TypeScript, and Tailwind CSS
+          </span>
+          , where I focus on building pixel-perfect and performant UIs.
+        </p>
+
+        {/* Impact Paragraph */}
+        <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+          I’ve contributed to{" "}
+          <span className="font-semibold text-gray-900">
+            website migrations, performance optimization, and UX improvements
+          </span>
+          , always aiming for a balance between elegant design and scalable
+          code. Currently, I’m expanding into{" "}
+          <span className="font-semibold text-brand-600">Next.js</span> and
+          full-stack development to deliver modern end-to-end solutions.
+        </p>
+
+        {/* Highlight Card */}
+        <div className="bg-white/80 backdrop-blur-lg shadow-xl rounded-2xl p-6 mb-10">
+          <p className="text-gray-800 text-lg leading-relaxed">
+            <span className="font-semibold text-brand-600">My goal</span> is to
+            transform ideas into digital products that are{" "}
+            <span className="italic">intuitive, scalable,</span> and{" "}
+            <span className="italic">impactful</span>.
+          </p>
         </div>
 
-        {/* About Text */}
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            About Me
-          </h2>
-          <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-            I'm a Frontend Developer from Islamabad with 1+ years of experience
-            building responsive, user-friendly web applications. I specialize in{" "}
-            <span className="font-semibold">
-              React.js, TypeScript, and Tailwind CSS
-            </span>
-            .
-          </p>
-          <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-            I’ve worked on real-world projects like{" "}
-            <span className="font-semibold">
-              website migrations, performance optimization, and UI/UX
-              improvements
-            </span>
-            . Right now, I’m expanding into Next.js and full-stack development.
-          </p>
-          <a
-            href="#projects"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
-          >
-            View My Work
-          </a>
-        </div>
+        {/* CTA */}
+        <a
+          href="#projects"
+          className="inline-block bg-brand-600 text-white px-8 py-3 rounded-xl shadow-md hover:shadow-lg hover:bg-brand-700 transition font-medium"
+        >
+          View My Work
+        </a>
       </div>
     </section>
   );
