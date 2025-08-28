@@ -24,45 +24,45 @@ function App() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        {/* Each section wrapped with spacing + snap */}
-        <section id="hero" className="snap-start py-24">
+        {/* Hero gets more breathing room */}
+        <section id="hero" className="snap-start pt-28 pb-20">
           <Hero />
         </section>
 
-        <section id="projects" className="snap-start py-24">
+        <section id="projects" className="snap-start py-20">
           <Projects />
         </section>
 
-        <section id="experience" className="snap-start py-24">
+        <section id="experience" className="snap-start py-20">
           <Experience />
         </section>
 
-        <section id="about" className="snap-start py-24">
+        <section id="about" className="snap-start py-20">
           <About />
         </section>
 
-        <section id="skills" className="snap-start py-24">
+        <section id="skills" className="snap-start py-20">
           <Skills />
         </section>
 
-        <section id="certificates" className="snap-start py-24">
+        <section id="certificates" className="snap-start py-20">
           <Certificates />
         </section>
 
-        <section id="articles" className="snap-start py-24">
+        <section id="articles" className="snap-start py-20">
           <Articles />
         </section>
 
-        <section id="resume" className="snap-start py-24">
+        <section id="resume" className="snap-start py-20">
           <Resume />
         </section>
 
-        <section id="contact" className="snap-start py-24">
+        <section id="contact" className="snap-start py-20">
           <Contact />
         </section>
       </motion.main>
 
-      {/* Footer */}
+      {/* Footer - no extra margin above */}
       <Footer />
     </div>
   );

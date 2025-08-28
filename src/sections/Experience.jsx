@@ -1,4 +1,5 @@
 // src/sections/Experience.jsx
+import { motion } from "framer-motion";
 import {
   HiOutlineCalendar,
   HiOutlineOfficeBuilding,
@@ -55,80 +56,99 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="py-20 bg-gradient-to-b from-gray-950 to-gray-900 relative"
+      className="relative py-24 px-6 bg-gradient-to-br from-slate-900 via-slate-950 to-black text-white overflow-hidden"
     >
-      <div className="max-w-5xl mx-auto px-6">
+      {/* Glow Orbs */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-5xl mx-auto">
         {/* Heading */}
-        <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold bg-gradient-to-r from-brand-400 to-brand-600 bg-clip-text text-transparent">
-            Experience
-          </h2>
-        </div>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-center text-4xl md:text-5xl font-bold mb-16 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400"
+        >
+          Experience
+        </motion.h2>
 
         {/* Timeline */}
-        <ol className="relative border-s-2 border-gradient-to-b from-brand-500/70 to-brand-700/70">
+        <ol className="relative border-s-2 border-purple-500/30">
           {experiences.map((exp, idx) => (
-            <li key={idx} className="ms-6 mb-12 relative">
-              {/* dot */}
-              <span className="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-brand-600 ring-4 ring-gray-900 shadow-md shadow-brand-500/30" />
+            <motion.li
+              key={idx}
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: idx * 0.2 }}
+              viewport={{ once: true }}
+              className="ms-8 mb-14 relative"
+            >
+              {/* Timeline Dot */}
+              <span className="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-blue-500 ring-4 ring-slate-900 shadow-lg shadow-purple-500/40" />
 
-              {/* card */}
-              <div className="bg-gray-800/60 backdrop-blur-lg border border-gray-700 rounded-xl p-6 transition hover:border-brand-500/60 hover:shadow-lg hover:shadow-brand-600/30">
-                {/* header */}
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-3">
-                  <h3 className="text-xl font-semibold text-white">
+              {/* Card */}
+              <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition hover:border-purple-400/40 hover:shadow-xl hover:shadow-purple-500/30">
+                {/* Header */}
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <h3 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
                     {exp.role}
                   </h3>
-                  <div className="flex items-center text-sm text-gray-400">
-                    <HiOutlineOfficeBuilding className="me-1" />
+                  <span className="flex items-center text-sm bg-white/10 px-3 py-1 rounded-lg text-gray-300">
+                    <HiOutlineOfficeBuilding className="mr-1" />
                     {exp.company}
-                  </div>
-                  <div className="flex items-center text-sm text-gray-400">
-                    <HiOutlineCalendar className="me-1" />
+                  </span>
+                  <span className="flex items-center text-sm bg-white/10 px-3 py-1 rounded-lg text-gray-300">
+                    <HiOutlineCalendar className="mr-1" />
                     {exp.period}
-                  </div>
+                  </span>
                   {exp.location && (
-                    <span className="text-sm text-gray-500">
+                    <span className="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-300">
                       {exp.location}
                     </span>
                   )}
                 </div>
 
-                {/* highlights */}
-                <ul className="mt-2 space-y-2 text-gray-300">
+                {/* Highlights */}
+                <ul className="space-y-2 text-gray-300">
                   {exp.highlights.map((h, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <HiCheckCircle className="text-brand-500 mt-0.5 flex-shrink-0" />
+                      <HiCheckCircle className="text-purple-400 mt-1 flex-shrink-0" />
                       <span>{h}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* tech */}
-                <div className="mt-4 flex flex-wrap gap-2">
+                {/* Tech Stack */}
+                <div className="mt-5 flex flex-wrap gap-2">
                   {exp.tech.map((t, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 text-sm rounded-lg border border-brand-500/40 text-brand-300 bg-brand-500/10 hover:bg-brand-500/20 transition"
+                      className="px-3 py-1 text-sm rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 text-purple-200 hover:from-purple-500/30 hover:to-blue-500/30 transition"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
               </div>
-            </li>
+            </motion.li>
           ))}
         </ol>
 
-        {/* Resume button */}
-        <div className="mt-14 text-center">
-          <a
+        {/* Resume Button */}
+        <div className="mt-16 text-center">
+          <motion.a
             href="/resume.pdf"
             download
-            className="inline-block px-6 py-3 rounded-xl font-medium bg-gradient-to-r from-brand-500 to-brand-700 text-white shadow-md hover:shadow-lg hover:shadow-brand-600/40 transition"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block px-8 py-3 rounded-xl font-medium bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-md hover:shadow-lg hover:shadow-purple-500/40 transition"
           >
             Download Resume
-          </a>
+          </motion.a>
         </div>
       </div>
     </section>

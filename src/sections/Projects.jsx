@@ -9,6 +9,7 @@ import {
   SiNodedotjs,
   SiMongodb,
   SiSocketdotio,
+  SiVite,
 } from "react-icons/si";
 
 export default function Projects() {
@@ -20,6 +21,7 @@ export default function Projects() {
     "Node.js": <SiNodedotjs className="text-green-500" size={18} />,
     MongoDB: <SiMongodb className="text-green-400" size={18} />,
     "Socket.IO": <SiSocketdotio className="text-gray-300" size={18} />,
+    Vite: <SiVite className="text-purple-400" size={18} />,
   };
 
   const projects = [
@@ -74,87 +76,150 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, i) => (
-            <motion.div
-              key={i}
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: i * 0.15, duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
-              whileHover={{
-                y: -12,
-                scale: 1.02,
-                transition: { duration: 0.35, ease: "easeOut" },
-              }}
-              className="relative group bg-white/[0.07] backdrop-blur-xl border border-white/10 
-                         rounded-3xl shadow-premium hover:shadow-glow p-8 flex flex-col 
-                         transition-all duration-300"
-            >
-              {/* Ribbon */}
-              <div
-                className="absolute -top-4 left-1/2 -translate-x-1/2 
-                           bg-gradient-to-r from-brand-500 to-accent-500 
-                           text-white text-xs md:text-sm font-semibold px-5 py-1.5 
-                           rounded-full shadow-lg tracking-wide"
+        {/* Projects Wrapper */}
+        <div className="relative">
+          {/* Desktop Grid */}
+          <div className="hidden md:grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project, i) => (
+              <motion.div
+                key={i}
+                initial={{ y: 60, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{
+                  delay: i * 0.15,
+                  duration: 0.8,
+                  ease: "easeOut",
+                }}
+                viewport={{ once: true }}
+                whileHover={{
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.35, ease: "easeOut" },
+                }}
+                className="relative group glass-card border border-border-primary 
+                           rounded-2xl shadow-premium hover:shadow-glow 
+                           p-6 md:p-8 flex flex-col transition-all duration-300 overflow-visible"
               >
-                {project.title}
-              </div>
+                {/* Ribbon */}
+                <div
+                  className="absolute -top-4 left-1/2 -translate-x-1/2 
+                             bg-gradient-to-r from-indigo-500 to-purple-500 
+                             text-white text-xs md:text-sm font-semibold px-5 py-1.5 
+                             rounded-full shadow-lg tracking-wide"
+                >
+                  {project.title}
+                </div>
 
-              {/* Description */}
-              <div className="mt-8 flex-1">
-                <p className="text-text-secondary mb-6 leading-relaxed text-base md:text-[15px]">
+                {/* Description */}
+                <div className="mt-8 flex-1">
+                  <p className="text-text-secondary mb-6 leading-relaxed text-sm md:text-base">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((t, j) => (
+                      <span
+                        key={j}
+                        className="flex items-center gap-2 px-3 py-1 text-sm font-medium rounded-xl 
+                                   bg-white/5 border border-border-primary shadow-sm text-white"
+                      >
+                        {iconMap[t] ?? t}
+                        {iconMap[t] ? null : t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-4 mt-8">
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary flex-1 inline-flex items-center justify-center gap-2"
+                  >
+                    <ExternalLink size={16} /> Demo
+                  </a>
+                  <a
+                    href={project.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-outline flex-1 inline-flex items-center justify-center gap-2"
+                  >
+                    <Github size={16} /> Code
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Mobile Auto Scroll Carousel */}
+          <motion.div
+            className="flex md:hidden gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory px-2"
+            initial={{ x: 0 }}
+            animate={{ x: ["0%", "-100%"] }}
+            transition={{
+              repeat: Infinity,
+              duration: 30,
+              ease: "linear",
+            }}
+          >
+            {projects.concat(projects).map((project, i) => (
+              <div
+                key={i}
+                className="snap-center shrink-0 w-[85%] glass-card border border-border-primary 
+                           rounded-2xl shadow-premium p-6 flex flex-col overflow-visible"
+              >
+                <div
+                  className="absolute -top-4 left-1/2 -translate-x-1/2 
+                             bg-gradient-to-r from-indigo-500 to-purple-500 
+                             text-white text-xs font-semibold px-4 py-1 rounded-full shadow-lg"
+                >
+                  {project.title}
+                </div>
+                <p className="text-text-secondary mt-6 mb-4 text-sm leading-relaxed">
                   {project.description}
                 </p>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((t, j) => (
                     <span
                       key={j}
-                      className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-xl 
-                                 bg-white/5 border border-white/10 shadow-sm text-white"
+                      className="flex items-center gap-2 px-3 py-1 text-sm font-medium rounded-xl 
+                                 bg-white/5 border border-border-primary text-white"
                     >
                       {iconMap[t] ?? t}
                       {iconMap[t] ? null : t}
                     </span>
                   ))}
                 </div>
+                <div className="flex gap-3 mt-auto">
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary flex-1 flex items-center justify-center gap-2"
+                  >
+                    <ExternalLink size={16} /> Demo
+                  </a>
+                  <a
+                    href={project.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-outline flex-1 flex items-center justify-center gap-2"
+                  >
+                    <Github size={16} /> Code
+                  </a>
+                </div>
               </div>
-
-              {/* Action Buttons */}
-              <div className="flex gap-4 mt-10">
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 
-                             rounded-xl text-sm md:text-base font-medium px-4 py-2
-                             bg-gradient-to-r from-brand-500 to-accent-500 text-white shadow-lg
-                             hover:opacity-90 transition"
-                >
-                  <ExternalLink size={16} /> Demo
-                </a>
-                <a
-                  href={project.code}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 
-                             rounded-xl text-sm md:text-base font-medium px-4 py-2
-                             border border-white/20 text-white hover:bg-white/10 transition"
-                >
-                  <Github size={16} /> Code
-                </a>
-              </div>
-            </motion.div>
-          ))}
+            ))}
+          </motion.div>
         </div>
       </div>
 
       {/* Background Glow Accents */}
-      <div className="absolute top-40 left-20 w-80 h-80 bg-brand-500/25 blur-[140px] rounded-full" />
-      <div className="absolute bottom-40 right-20 w-80 h-80 bg-accent-500/25 blur-[140px] rounded-full" />
+      <div className="absolute top-40 left-20 w-72 h-72 bg-indigo-500/20 blur-[140px] rounded-full" />
+      <div className="absolute bottom-40 right-20 w-72 h-72 bg-purple-500/20 blur-[140px] rounded-full" />
     </section>
   );
 }

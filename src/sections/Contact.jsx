@@ -1,41 +1,130 @@
+// src/sections/Contact.jsx
+import { motion } from "framer-motion";
+import {
+  FaPaperPlane,
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaUser,
+  FaAt,
+  FaRegCommentDots,
+} from "react-icons/fa";
+
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 px-6 bg-gray-50">
-      <div className="max-w-4xl mx-auto text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          Get In Touch
-        </h2>
-        <p className="text-lg text-gray-600">
-          Have a project idea or just want to say hi? Drop me a message below.
-        </p>
+    <section
+      id="contact"
+      className="relative py-24 px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden"
+    >
+      {/* Glow background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-500/30 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Contact Form */}
-      <form className="max-w-2xl mx-auto bg-white shadow-md rounded-xl p-8">
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
-          <input
-            type="text"
-            placeholder="Your Name"
-            className="border border-gray-300 rounded-lg px-4 py-3 w-full focus:ring-2 focus:ring-blue-500 outline-none"
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            className="border border-gray-300 rounded-lg px-4 py-3 w-full focus:ring-2 focus:ring-blue-500 outline-none"
+      {/* Heading */}
+      <div className="max-w-4xl mx-auto text-center mb-16">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400"
+        >
+          Get In Touch
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="text-lg text-gray-300 mt-4"
+        >
+          Have a project idea or just want to say hi? Drop me a message below 🚀
+        </motion.p>
+      </div>
+
+      {/* Form */}
+      <motion.form
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl rounded-2xl p-8 space-y-6"
+      >
+        {/* Name + Email */}
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="relative">
+            <FaUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="pl-12 pr-4 py-3 w-full rounded-lg bg-white/10 text-white placeholder-gray-400 border border-white/20 focus:ring-2 focus:ring-purple-400 focus:outline-none transition"
+            />
+          </div>
+          <div className="relative">
+            <FaAt className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="pl-12 pr-4 py-3 w-full rounded-lg bg-white/10 text-white placeholder-gray-400 border border-white/20 focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
+            />
+          </div>
+        </div>
+
+        {/* Message */}
+        <div className="relative">
+          <FaRegCommentDots className="absolute left-4 top-5 text-gray-400" />
+          <textarea
+            rows="5"
+            placeholder="Your Message"
+            className="pl-12 pr-4 py-3 w-full rounded-lg bg-white/10 text-white placeholder-gray-400 border border-white/20 focus:ring-2 focus:ring-purple-400 focus:outline-none transition"
           />
         </div>
-        <textarea
-          rows="5"
-          placeholder="Your Message"
-          className="border border-gray-300 rounded-lg px-4 py-3 w-full mb-6 focus:ring-2 focus:ring-blue-500 outline-none"
-        />
-        <button
+
+        {/* Submit */}
+        <motion.button
           type="submit"
-          className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition w-full md:w-auto"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-semibold bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg hover:shadow-xl transition"
         >
+          <FaPaperPlane className="w-5 h-5" />
           Send Message
-        </button>
-      </form>
+        </motion.button>
+      </motion.form>
+
+      {/* Social Links */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="flex justify-center gap-6 mt-12 text-gray-300"
+      >
+        <a
+          href="mailto:your@email.com"
+          className="hover:text-purple-400 transition"
+        >
+          <FaEnvelope size={26} />
+        </a>
+        <a
+          href="https://github.com/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-purple-400 transition"
+        >
+          <FaGithub size={26} />
+        </a>
+        <a
+          href="https://linkedin.com/in/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-purple-400 transition"
+        >
+          <FaLinkedin size={26} />
+        </a>
+      </motion.div>
     </section>
   );
 }
