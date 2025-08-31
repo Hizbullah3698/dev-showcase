@@ -14,17 +14,14 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <div className="font-sans section-gradient min-h-screen text-text-primary">
-      {/* Navbar always on top */}
       <Navbar />
 
-      {/* Smooth page entry animation */}
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        {/* Hero gets more breathing room */}
         <section id="hero" className="snap-start pt-28 pb-20">
           <Hero />
         </section>
@@ -62,7 +59,6 @@ function App() {
         </section>
       </motion.main>
 
-      {/* Footer - no extra margin above */}
       <Footer />
     </div>
   );

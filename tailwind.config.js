@@ -4,25 +4,13 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      /* 
-      ===========================================
-      FONTS - Centralized Typography System
-      ===========================================
-      */
       fontFamily: {
         display: ["Inter", "sans-serif"],
         body: ["Inter", "sans-serif"],
         mono: ["JetBrains Mono", "Fira Code", "monospace"],
       },
 
-      /* 
-      ===========================================
-      COLORS - Reading from CSS Variables
-      All colors reference globals.css :root variables
-      ===========================================
-      */
       colors: {
-        // Background system
         bg: {
           primary: "var(--bg-primary)",
           secondary: "var(--bg-secondary)",
@@ -30,14 +18,12 @@ module.exports = {
           card: "var(--bg-card)",
           "card-hover": "var(--bg-card-hover)",
         },
-        // Text system
         text: {
           primary: "var(--text-primary)",
           secondary: "var(--text-secondary)",
           muted: "var(--text-muted)",
           accent: "var(--text-accent)",
         },
-        // Accent system
         accent: {
           primary: "var(--accent-primary)",
           secondary: "var(--accent-secondary)",
@@ -45,7 +31,6 @@ module.exports = {
           cyan: "var(--accent-cyan)",
           red: "var(--accent-red)",
         },
-        // Border system
         border: {
           primary: "var(--border-primary)",
           secondary: "var(--border-secondary)",
@@ -53,11 +38,6 @@ module.exports = {
         },
       },
 
-      /* 
-      ===========================================
-      GRADIENTS - From CSS Variables
-      ===========================================
-      */
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",
         "gradient-accent": "var(--gradient-accent)",
@@ -65,11 +45,6 @@ module.exports = {
         "hero-gradient": "var(--gradient-hero)",
       },
 
-      /* 
-      ===========================================
-      SHADOWS - From CSS Variables
-      ===========================================
-      */
       boxShadow: {
         glow: "var(--shadow-glow)",
         "glow-lg": "var(--shadow-glow-lg)",
@@ -77,11 +52,6 @@ module.exports = {
         "card-hover": "var(--shadow-card-hover)",
       },
 
-      /* 
-      ===========================================
-      ANIMATIONS - Premium 2025 Animations
-      ===========================================
-      */
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
         "fade-up": "fadeUp 0.6s ease-out",
@@ -155,11 +125,6 @@ module.exports = {
         },
       },
 
-      /* 
-      ===========================================
-      SPACING - Extended Spacing Scale
-      ===========================================
-      */
       spacing: {
         18: "4.5rem",
         88: "22rem",
@@ -168,11 +133,6 @@ module.exports = {
         128: "32rem",
       },
 
-      /* 
-      ===========================================
-      TYPOGRAPHY - Extended Font Scale
-      ===========================================
-      */
       fontSize: {
         "2xs": ["0.625rem", { lineHeight: "0.75rem" }],
         "5xl": ["3rem", { lineHeight: "1" }],
@@ -186,11 +146,6 @@ module.exports = {
         tightest: "-0.075em",
       },
 
-      /* 
-      ===========================================
-      MISC - Additional Utilities
-      ===========================================
-      */
       borderRadius: {
         "2xl": "1rem",
         "3xl": "1.5rem",
@@ -210,15 +165,8 @@ module.exports = {
     },
   },
 
-  /* 
-  ===========================================
-  PLUGINS - Custom Component Classes
-  These create reusable utility classes
-  ===========================================
-  */
   plugins: [
     function ({ addComponents, addUtilities }) {
-      // Add component classes (like .btn-primary, .glass-card)
       addComponents({
         ".btn-primary": {
           background: "var(--gradient-primary)",
@@ -272,7 +220,6 @@ module.exports = {
         },
       });
 
-      // Add utility classes
       addUtilities({
         ".text-gradient": {
           background: "var(--gradient-primary)",
