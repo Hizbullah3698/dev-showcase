@@ -1,6 +1,6 @@
 /* globals.css - Optimized Premium Design System */
 
-/* 1. Fonts should always come first */
+/* 1. Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
 /* 2. Tailwind layers */
@@ -12,10 +12,7 @@
 ===========================================
 DESIGN TOKENS - SINGLE SOURCE OF TRUTH
 ===========================================
-All colors, gradients, shadows defined here.
-Tailwind config reads from these CSS variables.
 */
-
 :root {
   /* Background System */
   --bg-primary: #0a0a0f;
@@ -86,7 +83,6 @@ Tailwind config reads from these CSS variables.
 BASE STYLES
 ===========================================
 */
-
 * {
   margin: 0;
   padding: 0;
@@ -133,12 +129,9 @@ body {
 /* 
 ===========================================
 COMPONENT UTILITIES (Tailwind Plugin Layer)
-These will be moved to tailwind.config.js plugins
 ===========================================
 */
-
 @layer components {
-  /* Glass Morphism Components */
   .glass {
     background: var(--bg-card);
     backdrop-filter: blur(20px);
@@ -157,7 +150,6 @@ These will be moved to tailwind.config.js plugins
     transform: translateY(-4px);
   }
 
-  /* Button Components */
   .btn-primary {
     background: var(--gradient-primary);
     @apply border-0 px-6 py-3 rounded-xl text-white font-semibold text-sm cursor-pointer transition-all duration-300 relative overflow-hidden;
@@ -179,7 +171,6 @@ These will be moved to tailwind.config.js plugins
     box-shadow: var(--shadow-glow);
   }
 
- 
   .text-gradient {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -194,7 +185,6 @@ These will be moved to tailwind.config.js plugins
     background-clip: text;
   }
 
-
   .card-hover-lift {
     @apply transition-all duration-300 ease-out;
   }
@@ -203,12 +193,11 @@ These will be moved to tailwind.config.js plugins
     transform: translateY(-4px);
   }
 
-  /* Section Components */
   .section-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  .section-padding {
+  .section {
     @apply py-16 lg:py-24;
   }
 }

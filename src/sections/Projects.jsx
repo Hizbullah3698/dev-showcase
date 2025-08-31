@@ -58,7 +58,6 @@ export default function Projects() {
       aria-label="Featured Projects"
     >
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Section Heading */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -76,9 +75,7 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Projects Wrapper */}
         <div className="relative">
-          {/* Desktop Grid */}
           <div className="hidden md:grid gap-10 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, i) => (
               <motion.div
@@ -100,7 +97,6 @@ export default function Projects() {
                            rounded-2xl shadow-premium hover:shadow-glow 
                            p-6 md:p-8 flex flex-col transition-all duration-300 overflow-visible"
               >
-                {/* Ribbon */}
                 <div
                   className="absolute -top-4 left-1/2 -translate-x-1/2 
                              bg-gradient-to-r from-indigo-500 to-purple-500 
@@ -109,14 +105,10 @@ export default function Projects() {
                 >
                   {project.title}
                 </div>
-
-                {/* Description */}
                 <div className="mt-8 flex-1">
                   <p className="text-text-secondary mb-6 leading-relaxed text-sm md:text-base">
                     {project.description}
                   </p>
-
-                  {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t, j) => (
                       <span
@@ -130,8 +122,6 @@ export default function Projects() {
                     ))}
                   </div>
                 </div>
-
-                {/* Action Buttons */}
                 <div className="flex gap-4 mt-8">
                   <a
                     href={project.demo}
@@ -154,7 +144,6 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Mobile Auto Scroll Carousel */}
           <motion.div
             className="flex md:hidden gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory px-2"
             initial={{ x: 0 }}
@@ -216,8 +205,6 @@ export default function Projects() {
           </motion.div>
         </div>
       </div>
-
-      {/* Background Glow Accents */}
       <div className="absolute top-40 left-20 w-72 h-72 bg-indigo-500/20 blur-[140px] rounded-full" />
       <div className="absolute bottom-40 right-20 w-72 h-72 bg-purple-500/20 blur-[140px] rounded-full" />
     </section>

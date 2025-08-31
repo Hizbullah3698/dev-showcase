@@ -1,4 +1,6 @@
 // src/sections/Contact.jsx
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import {
   FaPaperPlane,
@@ -11,6 +13,30 @@ import {
 } from "react-icons/fa";
 
 export default function Contact() {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID, // ✅ from .env
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // ✅ from .env
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY // ✅ from .env
+      )
+      .then(
+        () => {
+          alert("✅ Message sent successfully!");
+          form.current.reset();
+        },
+        (error) => {
+          console.error("EmailJS Error:", error);
+          alert("❌ Something went wrong. Please try again.");
+        }
+      );
+  };
+
   return (
     <section
       id="contact"
@@ -46,6 +72,8 @@ export default function Contact() {
 
       {/* Form */}
       <motion.form
+        ref={form}
+        onSubmit={sendEmail}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -58,7 +86,9 @@ export default function Contact() {
             <FaUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
             <input
               type="text"
+              name="from_name"
               placeholder="Your Name"
+              required
               className="pl-12 pr-4 py-3 w-full rounded-lg bg-white/10 text-white placeholder-gray-400 border border-white/20 focus:ring-2 focus:ring-purple-400 focus:outline-none transition"
             />
           </div>
@@ -66,7 +96,9 @@ export default function Contact() {
             <FaAt className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
             <input
               type="email"
+              name="from_email"
               placeholder="Your Email"
+              required
               className="pl-12 pr-4 py-3 w-full rounded-lg bg-white/10 text-white placeholder-gray-400 border border-white/20 focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
             />
           </div>
@@ -77,7 +109,9 @@ export default function Contact() {
           <FaRegCommentDots className="absolute left-4 top-5 text-gray-400" />
           <textarea
             rows="5"
+            name="message"
             placeholder="Your Message"
+            required
             className="pl-12 pr-4 py-3 w-full rounded-lg bg-white/10 text-white placeholder-gray-400 border border-white/20 focus:ring-2 focus:ring-purple-400 focus:outline-none transition"
           />
         </div>
@@ -103,7 +137,7 @@ export default function Contact() {
         className="flex justify-center gap-6 mt-12 text-gray-300"
       >
         <a
-          href="mailto:your@email.com"
+          href="mailto:hizbullah3698@gmail.com"
           className="hover:text-purple-400 transition"
         >
           <FaEnvelope size={26} />

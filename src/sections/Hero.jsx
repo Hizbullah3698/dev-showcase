@@ -37,6 +37,7 @@ export default function Hero() {
     "Performance Optimizer",
   ];
   const [currentSkill, setCurrentSkill] = useState(0);
+
   useEffect(() => {
     const interval = setInterval(
       () => setCurrentSkill((prev) => (prev + 1) % skills.length),
@@ -49,6 +50,7 @@ export default function Hero() {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
+
   const itemVariants = {
     hidden: { y: 30, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.8 } },
@@ -57,9 +59,8 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-screen flex items-center justify-center overflow-hidden section"
     >
-      {/* Dynamic BG */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-primary" />
         <motion.div
@@ -75,7 +76,6 @@ export default function Hero() {
         />
       </div>
 
-      {/* Content */}
       <motion.div style={{ y: y1 }} className="relative z-10 section-container">
         <motion.div
           style={{ opacity: contentOpacity }}
@@ -84,7 +84,6 @@ export default function Hero() {
           animate={isVisible ? "visible" : "hidden"}
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl mx-auto"
         >
-          {/* Left */}
           <div className="space-y-8">
             <motion.div
               variants={itemVariants}
@@ -140,7 +139,6 @@ export default function Hero() {
               .
             </motion.p>
 
-            {/* Stats */}
             <motion.div
               variants={itemVariants}
               className="flex flex-wrap gap-6 lg:gap-8"
@@ -163,7 +161,6 @@ export default function Hero() {
               ))}
             </motion.div>
 
-            {/* CTA */}
             <motion.div variants={itemVariants} className="flex gap-4">
               <motion.a
                 href="#projects"
@@ -188,14 +185,12 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right - Big Profile Image */}
           <motion.div
             style={{ y: y2 }}
             variants={itemVariants}
             className="relative w-full flex justify-center"
           >
             <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-              {/* Glowing Gradient Ring */}
               <motion.div
                 className="absolute inset-0 rounded-full border-4 border-transparent"
                 style={{
@@ -206,7 +201,6 @@ export default function Hero() {
                 transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
               />
               <div className="absolute inset-0 rounded-full blur-3xl opacity-40 bg-gradient-to-r from-accent-primary to-accent-secondary" />
-              {/* Image */}
               <motion.img
                 src="/Profile.png"
                 alt="Hizbullah"
@@ -222,20 +216,19 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           style={{ opacity: contentOpacity }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2"
         >
           <motion.a
             href="#about"
             className="flex flex-col items-center text-text-muted hover:text-accent-primary group"
-            animate={{ y: [0, 8, 0] }}
+            animate={{ y: [0, 6, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            <span className="text-xs mb-2">Scroll to explore</span>
+            <span className="text-xs mb-1">Scroll to explore</span>
             <ArrowDown size={20} className="group-hover:translate-y-1" />
           </motion.a>
         </motion.div>
